@@ -1,0 +1,14 @@
+title: Preston Astidias
+description: 
+url: preasti03.github.io
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+author:
+  name: Preston Astidias
+  email: preasti03@gmail.com
+social_links:
+  github: preasti03
+  linkedin: https://www.linkedin.com/in/preston-astidias/
