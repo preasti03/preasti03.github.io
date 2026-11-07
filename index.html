@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preston Astidias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="termwin">
+        <div class="termheader">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+        
+        <header>
+            <nav>
+                <a href="#about">./about</a>
+                <a href="#projects">./projects</a>
+                <a href="#contact">./contact</a>
+            </nav>
+        </header>
+
+        <section id="about">
+            <div class="prompt">$ whoami</div>
+            <div class="headline">
+                <div>
+                    <h1>Preston Astidias</h1>
+                    <p>computer engineering graduate -> aspiring security engineer</p>
+                </div>
+                <a class="gh-link" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+                    <img class="photo-box" src="images/headshot.jpg" alt="Preston Astidias">
+                    <pre class="gh-ascii">
+ ___ _ _____ _  _ _   _ ___ 
+/ __(_)_   _| || | | | | _ )
+| (_| | | | | __ | |_| | _ \
+\___|_| |_| |_||_|\___/|___/</pre>
+                </a>
+            </div>    
+        </section>
+
+        <section id="experience">
+            <div class="prompt">$ cat experience.log</div>
+        
+            <div class="timeline-wrap">
+                <button class="timeline-arrow left" onclick="scrollToTimelineEntry('timeline-start')" aria-label="jump to start">&lt;</button>
+                <button class="timeline-arrow right" onclick="scrollToTimelineEntry('timeline-end')" aria-label="jump to present">&gt;</button>
+
+                <div class="timeline-scroll">
+                    <div class="timeline-track">
+
+                        <div class="year-tick" style="left: 0px;"></div>
+                        <div class="year-label" style="left: 0px;">2024</div>
+
+                        <div class="year-tick" style="left: 450px;"></div>
+                        <div class="year-label" style="left: 450px;">2025</div>
+
+                        <div class="year-tick" style="left: 900px;"></div>
+                        <div class="year-label" style="left: 900px;">2026</div>
+
+                        <div class="year-tick" style="left: 1350px;"></div>
+                        <div class="year-label" style="left: 1350px;">2027</div>
+
+                        <div class="entry-dot" id="timeline-start" style="left: 150px;"></div>
+                        <div class="entry-label below" style="left: 150px;">
+                            <a class="entry-role" href="it-intern.html">Information Technology Intern</a>
+                            <div class="entry-meta">Wells Enterprises · May - Aug 2024</div>
+                        </div>
+
+                        <div class="entry-dot" style="left: 262.5px;"></div>
+                        <div class="entry-label above" style="left: 262.5px;">
+                            <a class="entry-role" href="service-desk.html">Assistant Service Desk Technician</a>
+                            <div class="entry-meta">Wells Enterprises · Aug 2024 - Present</div>
+                        </div>
+
+                        <div class="entry-dot" style="left: 1050px;"></div>
+                        <div class="entry-label above" style="left: 1050px;">
+                            <div class="entry-role">B.S. Computer Engineering</div>
+                            <div class="entry-meta">Purdue University · Aug 2022 - May 2026</div>
+                        </div>
+
+                        <div class="entry-dot" id="timeline-end" style="left: 1162.5px;"></div>
+                        <div class="entry-label below" style="left: 1162.5px;">
+                            <a class="entry-role" href="support-tech.html">Manufacturing Systems Support Technician I</a>
+                            <div class="entry-meta">Jabil · Aug 2026 - Present</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="prompt">$ ls ./projects</div>
+            <div class="project">
+                <div class="termheader project-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <img class="project-image" src="images/BlackHack_Image.jpg" alt="project_one screenshot">
+                <h3>Black-Hack-Glasses/</h3>
+                <p>Senior design project where my team used an esp-32 and camera module to enable glasses to see and track the cards dealt to give the player the best odds in the Black Jack card game. I created the simulated game logic and probability calculations that ultimately were responsible for the decision to hit or stand.</p>
+                <a href="#">view repo -></a>
+        </div>
+            <div class="project">
+                <div class="termheader project-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="project-image">[ project screenshot ]</div>
+                <h3>project_two/</h3>
+                <p>A short description of what this project does.</p>
+                <a href="#">view repo -></a>
+        </div>
+        </section>
+
+        <footer id="contact">
+            <div class="prompt">$ cat contact.txt</div>
+            <div class="contact-line"><span class="label">email</span><a href="mailto:me@gmail.com">me@gmail.com</a></div>
+            <div class="contact-line"><span class="label">phone</span><a href="tel:1234567890">(123) 456-7890</a></div>
+            <div class="contact-line"><span class="label">linkedin</span><a href="#" target="_blank">linkedin.com/preston</a></div>
+        </footer>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
+
