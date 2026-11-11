@@ -274,3 +274,28 @@ a.entry-role:hover {
 .timeline-arrow.left { left: -8px; }
 .timeline-arrow.right { right: -8px; }
 .timeline-arrow.hidden {display: none; }
+
+/* job detail pages */
+.job-meta {
+    font-size: 13px;
+    color: #5b7590;
+    margin: -10px 0 10px;
+}
+
+.job-list {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #8fa7bb;
+    line-height: 1.7;
+}
+
+.job-list li::marker {
+    content: "> ";
+    color: #4fd1c5;
+}
+
+.stack {
+    font-size: 12px;
+    color: #4fd1c5;
+}
