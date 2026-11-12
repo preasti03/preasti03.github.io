@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manufacturing Systems Support Technician · Preston Astidias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="termwin">
+        <div class="termheader">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+
+        <header>
+            <nav>
+                <a href="index.html#experience">cd ..</a>
+            </nav>
+        </header>
+
+        <section>
+            <div class="prompt">$ cat support-tech.log</div>
+            <h1>Manufacturing Systems Support Technician I</h1>
+            <div class="job-meta">Jabil · Aug 2026 – Present</div>
+            <p>I support the production floor at a plant that builds power electronics for solar energy systems. My job is to keep our manufacturing execution system (MES), JEMS, in sync with what's physically happening on the line, so every unit can be traced from start to finish. When a system issue stops an operator from completing a step, the line lead calls us, and it's on us to figure out why and get production moving again.</p>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat at-a-glance.txt</div>
+            <div class="facts">
+                <div><span class="label">lines</span>~6 production lines and areas across multiple bays</div>
+                <div><span class="label">requests</span>5–15 a day from production, quality and engineering</div>
+                <div><span class="label">system</span>JEMS (MES): routes, labels, printers, user access</div>
+                <div><span class="label">team</span>Manufacturing systems, reporting to configuration engineers</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="prompt">$ grep "what I do"</div>
+            <ul class="job-list">
+                <li>Troubleshoot line issues where JEMS blocks a production step, figuring out whether it's a route rule, a missing certification or a data mismatch, and getting the unit moving without breaking traceability.</li>
+                <li>Manage user access in JEMS by assigning operators to the right groups (Operator, Rework) and granting individual certifications like master rework or permission to run specific test stations.</li>
+                <li>Write SQL queries in SQL Server to pull traceability and production data for the quality team.</li>
+                <li>Reconfigure traceability labels and set up printers in JEMS when the line needs changes.</li>
+                <li>Work with IT when a tool we support goes down, and with quality and industrial engineering on day-to-day requests.</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat projects/new-building.md</div>
+            <p><span class="hl">Bringing a new production building online.</span> Part of our production is moving to a new building, and I've helped get its systems ready. That meant learning how routes are built in JEMS: editing route steps, adding printers, setting up triggers that fire at certain steps, and working through pre-start rules and the other details that decide whether a line can actually run. It's been a fast way to learn how the whole system fits together.</p>
+            <p><span class="hl">MES upgrade testing.</span> I took part in user acceptance testing (UAT) for a JEMS version upgrade, checking that the workflows we depend on still behaved correctly before it went live.</p>
+            <p><span class="hl">App migration (in progress).</span> I'm migrating our team's meeting, action item and task tracking app off a legacy version, my first project that I own from start to finish.</p>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat tools.txt</div>
+            <div class="stack">jems (mes) · sql server · ssms · swagger · postman · rest apis · excel · microsoft forms</div>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat takeaways.txt</div>
+            <p>This job is a lot less "IT" than I expected, and I like that. Factory systems connect software straight to physical products, so a bad change doesn't just cause a ticket, it can stop a line. That's taught me to understand exactly what a change will do before I make it, and to keep a record of it in case I need to roll it back.</p>
+            <p>I also picked up SQL from scratch, which was a real learning curve. Managing who can do what on the production floor has given me a practical feel for access control in an environment where mistakes have physical consequences, which connects directly to my interest in security, especially security for operational technology (OT).</p>
+        </section>
+    </div>
+</body>
+</html>

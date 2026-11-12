@@ -290,6 +290,8 @@ a.entry-role:hover {
     line-height: 1.7;
 }
 
+.job-list li { margin-bottom: 6px; }
+
 .job-list li::marker {
     content: "> ";
     color: #4fd1c5;
@@ -298,4 +300,39 @@ a.entry-role:hover {
 .stack {
     font-size: 12px;
     color: #4fd1c5;
+}
+
+.facts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #8fa7bb;
+}
+
+.facts .label {
+    display: inline-block;
+    width: 90px;
+}
+
+.hl {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* project card spacing */
+.project h3, .project p { padding: 0 18px; }
+.project h3 { margin-top: 16px; }
+.project > a { display: inline-block; margin: 0 0 16px 18px; color: #4fd1c5; }
+.project > a:hover { text-decoration: underline; }
+
+/* phones */
+@media (max-width: 600px) {
+    body { padding: 16px 10px; }
+    .termwin section, .termwin footer { padding: 18px 16px; }
+    nav { gap: 12px; flex-wrap: wrap; font-size: 13px; }
+    h1 { font-size: 26px; }
+    .headline { gap: 16px; }
+    .gh-link { width: 90px; }
+    .project-image { aspect-ratio: 2 / 1; }
 }
