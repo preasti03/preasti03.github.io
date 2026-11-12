@@ -121,6 +121,24 @@
                 <a href="https://github.com/giodegeronimo/ece_30801_project" target="_blank" rel="noopener">phase 1 repo -&gt;</a>
                 <a href="https://github.com/giodegeronimo/ACMEModels" target="_blank" rel="noopener">phase 2 repo -&gt;</a>
         </div>
+            <div class="project">
+                <div class="termheader project-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="project-ascii-wrap"><pre class="project-ascii">ISP → building → TP-Link Deco
+                      │
+           ┌──────────┴───────────┐
+      Proxmox host           Raspberry Pi
+      ├── ZFS  2×4 TB         ├── backup DNS
+      ├── GPU passthrough      └── monitoring
+      ├── 6×  LXC containers
+      └── 1×  VM  (Home Assistant)</pre></div>
+                <h3>homelab/</h3>
+                <p>A self-hosted server running Proxmox VE on consumer hardware. Eight services across six LXC containers and a VM — Jellyfin, Immich, Pi-hole, Home Assistant, Minecraft, and more. ZFS storage, GPU passthrough, redundant DNS, and zero inbound open ports.</p>
+                <a href="homelab.html">view setup -></a>
+            </div>
         <!-- Add project for Operating Systems class -->
         </section>
 

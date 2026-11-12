@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homelab · Preston Astidias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="termwin">
+        <div class="termheader">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+
+        <header>
+            <nav>
+                <a href="index.html#projects">cd ..</a>
+            </nav>
+        </header>
+
+        <section>
+            <div class="prompt run-trigger" id="run-trigger" role="button" tabindex="0" aria-label="Run homelab setup script">$ ./run homelab-setup<span class="run-hint"> ▸</span></div>
+            <pre class="run-output" id="run-output"></pre>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat at-a-glance.txt</div>
+            <h1>Homelab/</h1>
+            <div class="job-meta">Personal project · 2024 – present</div>
+            <p>A self-hosted server running Proxmox VE on consumer hardware. I've used it to learn how systems fit together — virtualization, storage, networking, remote access, and monitoring — by building things I actually use every day.</p>
+            <div class="facts" style="margin-top: 16px;">
+                <div><span class="label">cpu</span> AMD Ryzen 5 1600  (6c / 12t)</div>
+                <div><span class="label">ram</span> 16 GB DDR4</div>
+                <div><span class="label">gpu</span> NVIDIA GTX 1660 Super  (NVENC + CUDA, shared into containers)</div>
+                <div><span class="label">boot</span> 1 TB NVMe  (OS, containers, databases)</div>
+                <div><span class="label">nas</span> ZFS mirror · 2× 4 TB WD Red Plus · ~3.6 TB usable</div>
+                <div><span class="label">pi</span> Raspberry Pi  (backup DNS, monitoring, redundant VPN router)</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat architecture.txt</div>
+            <pre class="arch-diagram">
+                     Internet
+                        │
+          ┌─────────────┴──────────────┐
+          │      building network      │  no port forwarding
+          └─────────────┬──────────────┘
+                        │
+                  TP-Link Deco
+                        │
+   ┌────────────────────┼──────────────────────────┐
+   │                    │                          │
+Proxmox host        Raspberry Pi            PCs / phones / TV
+   │                ├── backup Pi-hole
+   │                ├── Tailscale subnet router
+   │                └── Uptime Kuma  (monitoring)
+   │
+   ├── ZFS mirror  2×4 TB ── Samba shares
+   ├── GTX 1660 Super  (passthrough into containers)
+   ├── LXC  Pi-hole  (primary DNS)
+   ├── VM   Home Assistant OS
+   ├── LXC  Immich  (Docker, GPU)
+   ├── LXC  Jellyfin  (native, GPU)
+   ├── LXC  Minecraft Bedrock ──► outbound tunnel ──► friends
+   ├── LXC  Finance tracker  (Flask)
+   └── LXC  Tailscale subnet router ◄── remote devices</pre>
+        </section>
+
+        <section>
+            <div class="prompt">$ ls services/</div>
+            <ul class="job-list">
+                <li><span class="hl">Pi-hole ×2</span> — dual DNS with hourly config replication via nebula-sync; local .lan records for every service; network-wide ad blocking</li>
+                <li><span class="hl">Tailscale</span> — VPN subnet router running on two nodes (server + Pi); exposes the full home network to my devices without opening any ports to the internet</li>
+                <li><span class="hl">Home Assistant</span> — home automation running as a VM (HAOS requires a full OS); manages lights, sensors, and automations</li>
+                <li><span class="hl">Jellyfin</span> — self-hosted media server installed natively with NVENC hardware transcoding; accessible remotely over Tailscale</li>
+                <li><span class="hl">Immich</span> — self-hosted photo backup; GPU-accelerated facial recognition and semantic search via CUDA; migrated 40k+ files from a Raspberry Pi</li>
+                <li><span class="hl">Minecraft</span> — Bedrock server with crossplay (PC, Xbox, PS5); friends connect via an outbound UDP tunnel since the building network has no port forwarding; self-healing watchdog posts status to Discord</li>
+                <li><span class="hl">Finance tracker</span> — Flask app that reads a live spreadsheet off the NAS to track loan payoff progress; LAN and Tailscale only, never exposed publicly</li>
+                <li><span class="hl">Uptime Kuma</span> — monitoring dashboard running on the Pi so it stays up if the main server crashes; alerts route to Discord</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat design-decisions.txt</div>
+            <ul class="job-list">
+                <li><span class="hl">LXC for almost everything.</span> Containers share the host kernel, start faster, use less RAM, and can access the GPU and ZFS datasets through bind mounts. Home Assistant runs as a VM because HAOS is a full operating system and that's the only supported way to run it.</li>
+                <li><span class="hl">Monitor on the Pi, not the server.</span> Uptime Kuma runs on the Raspberry Pi specifically so it can alert if the main server goes down. A monitor that dies with the thing it's watching isn't useful.</li>
+                <li><span class="hl">Zero inbound ports.</span> The building's network doesn't support port forwarding. Everything private goes over Tailscale; Minecraft uses an outbound UDP tunnel. The only traffic that reaches the internet is what I deliberately push out.</li>
+                <li><span class="hl">Static IPs outside DHCP, .lan names everywhere.</span> Services get Pi-hole local DNS records so I can reassign IPs without touching every app's config. Two Pi-holes with sync means DNS keeps working through restarts.</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="prompt">$ cat lessons.txt</div>
+            <ul class="job-list">
+                <li>A ZFS mirror survives a drive failure. It is not a backup — it doesn't protect against deletion, corruption, or the whole server going down. I keep three separate copies of anything I can't re-download.</li>
+                <li>The monitoring server belongs on a separate machine. The first time the main server went down and took Uptime Kuma with it, I moved it to the Pi the same day.</li>
+                <li>A script that prints "finished" even when it failed is worse than no script. I stopped trusting output messages and started checking exit codes.</li>
+                <li>Cron needs full paths. <code class="stack">pct</code> silently wasn't found for days because <code class="stack">/usr/sbin</code> isn't in cron's PATH. Always redirect output too — errors that go nowhere are impossible to debug.</li>
+                <li>When a dependency changes without warning, you find out at the worst time. A Minecraft update silently dropped the transport protocol my server was using. Now I test in a copy before updating anything production-facing.</li>
+            </ul>
+        </section>
+    </div>
+    <script src="homelab.js"></script>
+</body>
+</html>

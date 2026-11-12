@@ -326,6 +326,83 @@ a.entry-role:hover {
 .project > a { display: inline-block; margin: 0 0 16px 18px; color: #4fd1c5; }
 .project > a:hover { text-decoration: underline; }
 
+/* homelab run animation */
+.run-trigger {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.run-trigger:hover { text-decoration: underline; }
+
+.run-trigger.running {
+    opacity: 0.5;
+    cursor: default;
+    text-decoration: none;
+}
+
+.run-hint {
+    animation: blink 1.2s step-start infinite;
+}
+
+.run-trigger.running .run-hint,
+.run-trigger.done .run-hint { display: none; }
+
+.run-output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.65;
+    margin: 10px 0 0;
+    padding: 0;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.ao-head { color: #4fd1c5; }
+.ao-dim  { color: #5b7590; }
+.ao-ok   { color: #d3e4ee; }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.cursor {
+    color: #4fd1c5;
+    animation: blink 1s step-start infinite;
+}
+
+/* architecture diagram */
+.arch-diagram {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #5b7590;
+    white-space: pre;
+    margin: 8px 0 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+/* homelab project card ascii header */
+.project-ascii-wrap {
+    background: #0d1520;
+    display: flex;
+    justify-content: center;
+    padding: 16px 18px;
+    overflow-x: auto;
+}
+
+.project-ascii {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.45;
+    color: #3c5872;
+    white-space: pre;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
 /* phones */
 @media (max-width: 600px) {
     body { padding: 16px 10px; }
